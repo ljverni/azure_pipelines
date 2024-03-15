@@ -18,7 +18,7 @@ All resources utilized are within the Microsoft Azure ecosystem.
 
 ### ELT Flow
 
- - **Extract**: Data is extracted using Python from the API is moved to Landing Zone 1 (Azure blob containers) in JSON format, manipulating object name prefixes to simulate filesystem.
+ - **Extract**: Data is extracted using Python from the API is moved to Landing Zone 1 (Azure Blob containers) in JSON format, manipulating object name prefixes to simulate filesystem.
  - **Load**: JSON files are collected from Blob containers and loaded into Landing Zone 2 (SQL Server target tables - "src" schema).
  - **Transform**: DBT models are used for transformation. Data is passed from landing tables to staging tables ("stg" schema), and finally to live tables ("prod" schema).
 
