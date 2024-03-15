@@ -3,8 +3,6 @@
 #### Overview
 Data is extracted in batches from the News API using the Python requests library. The data collected from the News API is loaded into an Azure Blob container, and then moved to an Azure SQL landing table. ETL jobs are written using Python and DBT and scheduled in Cron.  
 
-![resource_group](https://github.com/ljverni/azure_pipelines/blob/main/azure_resource_group.jpg)
-
 ### Resources/Infrastructure
 All resources utilized are within the Microsoft Azure ecosystem.
  - Virtual Machine (Ubuntu 20.04).
@@ -15,6 +13,7 @@ All resources utilized are within the Microsoft Azure ecosystem.
  - Container Instances.
  - Virtual Networks.
  - Network Security Groups.
+![resource_group](https://github.com/ljverni/azure_pipelines/blob/main/azure_resource_group.jpg)
 
 ### ELT Flow
 
