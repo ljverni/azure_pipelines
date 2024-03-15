@@ -1,0 +1,29 @@
+FROM ubuntu:latest
+
+ARG SQL_USER
+ARG SQL_PWD
+
+ENV DW_USER_PROD=$SQL_USER
+ENV DW_PASSWORD_PROD=$SQL_PWD
+ENV PYTHONPATH /
+
+WORKDIR /src
+
+COPY ./src/dbt_transform ./dbt_transform
+COPY ./venv/requirements_dbt.txt .
+COPY ./bash_scripts/dbt_transform.sh ./bash_scripts/dbt_transform.sh
+
+RUN apt-get update
+RUN apt install unixodbc-dev -y
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
+RUN pip install --no-cache-dir -r requirements_dbt.txt
+RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get update
+RUN apt-get install -y curl
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc
+RUN curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list | tee /etc/apt/sources.list.d/mssql-release.list
+RUN apt-get update
+RUN ACCEPT_EULA=Y apt-get install -y msodbcsql18
+
+CMD ["bash_scripts/dbt_transform.sh"]

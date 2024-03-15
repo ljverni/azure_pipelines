@@ -1,0 +1,7 @@
+tb
+venv/main
+venv/dbt
+__pycache__
+*.log
+*.swp
+terraform

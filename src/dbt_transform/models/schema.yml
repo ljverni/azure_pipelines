@@ -1,0 +1,28 @@
+
+version: 2
+
+models:
+  - name: news_article_prod
+    description: "Prod News Article table"
+    columns:
+      - name: article_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: source_id
+        tests:
+          - relationships:
+              to: news.news_source_prod
+              field: source_id
+  - name: news_source_prod
+    description: "Prod News Source table"
+    columns:
+      - name: source_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: name
+        tests:
+          - not_null

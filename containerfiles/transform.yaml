@@ -1,0 +1,26 @@
+name: Transform
+apiVersion: 2021-10-01
+location: eastus
+properties:
+  containers:
+  - name: dbttransform
+    properties:
+      image: caratacocontainerreg.azurecr.io/dbttransform
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      ports:
+      - port: 80
+      - port: 8080
+  osType: Linux
+  ipAddress:
+    type: Private
+    ports:
+    - protocol: tcp
+      port: 80
+  subnetIds:
+    - id: /subscriptions/32ed7398-6d43-404c-9261-b35ea8f876c0/resourceGroups/CaratacoPipelinesRG/providers/Microsoft.Network/virtualNetworks/DockerVN/subnets/default
+      name: default
+type: Microsoft.ContainerInstance/containerGroups
+

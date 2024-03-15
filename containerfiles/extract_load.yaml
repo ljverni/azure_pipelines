@@ -1,0 +1,36 @@
+name: ExtractLoad
+apiVersion: 2021-10-01
+location: eastus
+properties:
+  containers:
+  - name: newsarticle
+    properties:
+      image: caratacocontainerreg.azurecr.io/newsarticle
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      ports:
+      - port: 80
+      - port: 8080
+  - name: newssource
+    properties:
+      image: caratacocontainerreg.azurecr.io/newssource
+      resources:
+        requests:
+          cpu: 1
+          memoryInGb: 1.5
+      ports:
+      - port: 81
+      - port: 8081
+  osType: Linux
+  ipAddress:
+    type: Private
+    ports:
+    - protocol: tcp
+      port: 80
+  subnetIds:
+    - id: /subscriptions/32ed7398-6d43-404c-9261-b35ea8f876c0/resourceGroups/CaratacoPipelinesRG/providers/Microsoft.Network/virtualNetworks/DockerVN/subnets/default
+      name: default
+type: Microsoft.ContainerInstance/containerGroups
+

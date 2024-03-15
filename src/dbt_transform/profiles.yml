@@ -1,0 +1,13 @@
+
+dbt_transform:
+  target: news
+  outputs:
+    news:
+      type: sqlserver
+      driver: 'ODBC Driver 18 for SQL Server'
+      server: 'caratacodwsvr.database.windows.net'
+      port: 1433
+      database: 'CaratacoDW'
+      schema: 'news'
+      user: "{{ env_var('DW_USER_PROD') }}"
+      password: "{{ env_var('DW_PASSWORD_PROD') }}"

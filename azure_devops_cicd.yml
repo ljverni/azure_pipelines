@@ -1,0 +1,65 @@
+trigger:
+- main
+
+variables:
+  dockerRegistryServiceConnection: 'ContainerReg'
+  imageRepository: 'NewsSource'
+  dockerfilePath: '$(Build.SourcesDirectory)/dockerfiles/NewsSource'
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: Test
+  jobs:
+  - job: TestJob
+    pool:
+      vmImage: ubuntu-latest
+    strategy:
+      matrix:
+        Python37:
+          python.version: '3.8'
+
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '$(python.version)'
+      displayName: 'Use Python $(python.version)'
+
+    - script: |
+        python -m pip install --upgrade pip
+        pip install flake8
+        if [ -f venv/requirements_main.txt ]; then pip install -r venv/requirements_main.txt; fi
+      displayName: 'Install dependencies'
+
+    - script: |
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      displayName: 'Lint check'
+
+    - script: |
+        dir
+        pip install pytest pytest-azurepipelines
+        python -m pytest
+      displayName: 'pytest'
+
+- stage: BuildImage
+  displayName: Build and publish stage
+  jobs:
+  - job: Build
+    displayName: Build job
+    pool:
+      name: 'Azure Pipelines'
+    steps:
+    - task: DockerInstaller@0
+      inputs:
+        dockerVersion: '17.09.0-ce'
+
+    - task: Docker@2
+      displayName: Build and publish image to Azure Container Registry
+      inputs:
+        buildContext: $(Build.SourcesDirectory)
+        command: buildAndPush
+        containerRegistry: $(dockerRegistryServiceConnection)
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        tags: |
+          $(tag)  

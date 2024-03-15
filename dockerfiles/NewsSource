@@ -1,0 +1,30 @@
+FROM ubuntu:latest
+
+ARG AZ_SERVICE_PRINCIPAL_APPID
+ARG AZ_SERVICE_PRINCIPAL_SECRET
+
+ENV AZURE_CLIENT_ID=$AZ_SERVICE_PRINCIPAL_APPID
+ENV AZURE_CLIENT_SECRET=$AZ_SERVICE_PRINCIPAL_SECRET
+ENV PYTHONPATH /
+
+WORKDIR /src
+
+COPY ./src/news/news_source ./news/news_source
+COPY ./src/utilities ./utilities
+COPY ./venv/requirements_main.txt .
+COPY ./bash_scripts/news_source.sh ./bash_scripts/news_source.sh
+COPY .env .
+
+RUN apt-get update
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
+RUN pip install --no-cache-dir -r requirements_main.txt
+RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get update
+RUN apt-get install -y curl
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | tee /etc/apt/trusted.gpg.d/microsoft.asc
+RUN curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list | tee /etc/apt/sources.list.d/mssql-release.list
+RUN apt-get update
+RUN ACCEPT_EULA=Y apt-get install -y msodbcsql18
+
+CMD ["bash_scripts/news_source.sh"]
