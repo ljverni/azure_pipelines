@@ -13,7 +13,7 @@ All resources utilized are within the Microsoft Azure ecosystem.
  - Container Instances.
  - Virtual Networks.
  - Network Security Groups.
- - 
+  
 ![resource_group](https://github.com/ljverni/azure_pipelines/blob/main/azure_resource_group.jpg)
 
 ### ELT Flow
