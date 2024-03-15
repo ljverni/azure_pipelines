@@ -1,7 +1,7 @@
 # Azure Data Pipeline
 
 #### Overview
-Data is extracted in batches from the News API using the Python requests library. The data collected from the News API is loaded into an Azure Blob container, and then moved to an Azure SQL landing table. ETL jobs are written using Python and DBT and scheduled in Cron.  
+Data is extracted in batches from the News API. The data is then loaded into an Azure Blob container, and finally moved to an Azure SQL landing table. ETL jobs are written using Python and DBT and scheduled in Cron.  
 
 ### Resources/Infrastructure
 All resources utilized are within the Microsoft Azure ecosystem.
@@ -18,8 +18,8 @@ All resources utilized are within the Microsoft Azure ecosystem.
 
 ### ELT Flow
 
- - **Extract**: Data Collected (JSON) from the API is moved to Landing Zone 1 (Azure blob containers), manipulation object name prefix to simulate filesystem.
- - **Load**: JSON files are collected from Blob and loaded into Landing Zone 2 (SQL Server target tables - "src" schema).
+ - **Extract**: Data is extracted using Python from the API is moved to Landing Zone 1 (Azure blob containers) in JSON format, manipulating object name prefixes to simulate filesystem.
+ - **Load**: JSON files are collected from Blob containers and loaded into Landing Zone 2 (SQL Server target tables - "src" schema).
  - **Transform**: DBT models are used for transformation. Data is passed from landing tables to staging tables ("stg" schema), and finally to live tables ("prod" schema).
 
 ## Virtual Environments
@@ -32,7 +32,7 @@ All secrets are managed by Azure Vault. Authentication to Azure resources from D
 Python and DBT jobs are run by bash scripts, scheduled in Crontab.
 
 ## CI/CD:
-The CI step runs tests (PyTest) and lint checks. CD was initially condigured to push changes to Prod VM via GitHub Actions. This has been deprecated and replaced by an Azure DevOps pipeline that creates Docker images and pushes them to a Container Registry. 
+The CI step runs tests (PyTest) and lint checks. CD was initially set to push changes to Prod VM via GitHub Actions. This has been deprecated and replaced by an Azure DevOps pipeline that creates Docker images and pushes them to a Container Registry. 
 
 ## Next steps:
 Orchestrate ETL via Kubernetes and Apache Airflow.
