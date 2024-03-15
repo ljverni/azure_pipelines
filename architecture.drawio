@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net" modified="2024-03-15T15:28:20.756Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" etag="arLJ0dkZaKDcWX1WOVcB" version="24.0.7" type="device">
+  <diagram name="Page-1" id="FU9Mi9qG8xUX9aEtrZx5">
+    <mxGraphModel dx="880" dy="434" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="MmGFDUS_BtCfD5WDzD9v-2" target="MmGFDUS_BtCfD5WDzD9v-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-2" value="News API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="40" y="170" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="MmGFDUS_BtCfD5WDzD9v-3" target="MmGFDUS_BtCfD5WDzD9v-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-3" value="Capture Data (.py)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="180" y="170" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="MmGFDUS_BtCfD5WDzD9v-4" target="MmGFDUS_BtCfD5WDzD9v-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-4" value="&lt;div&gt;Landing 1&lt;/div&gt;Azure Blob" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="320" y="170" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-5" value="&lt;div&gt;Landing 2&lt;/div&gt;Azure SQL Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="460" y="170" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-6" value="Scheduled in Cron" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="150" y="78" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-7" value="Transform (DBT)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="505" y="260" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-8" value="Credentials managed by Azure Vault" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="260" y="78" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-13" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="MmGFDUS_BtCfD5WDzD9v-7" target="MmGFDUS_BtCfD5WDzD9v-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="389" y="310" as="sourcePoint" />
+            <mxPoint x="670" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-15" value="Credentials managed by Azure Vault" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="370" y="78" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MmGFDUS_BtCfD5WDzD9v-16" value="Deployed to Azure Container Reg" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="480" y="78" width="90" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
